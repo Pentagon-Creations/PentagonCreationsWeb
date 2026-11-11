@@ -1,0 +1,116 @@
+.section-featured-games {
+  background-color: var(--bg-light-gray);
+  color: var(--text-black);
+  padding-top: 40px;
+  padding-bottom: 56px;
+}
+
+.featured-games-title {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #111827;
+  margin-bottom: 24px;
+}
+
+/* Card sizing inside carousel */
+.featured-game-card {
+  position: relative;
+  background-color: #e5e7eb;
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  flex: 0 0 calc((100% - 3 * 18px) / 4);
+  min-width: 210px;
+  max-width: 270px;
+  scroll-snap-align: start;
+}
+
+.featured-game-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Red Overlapping Badge */
+.game-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--badge-red);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  z-index: 5;
+  border-bottom-right-radius: 2px;
+}
+
+/* Portrait cover area */
+.game-cover-area {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background-color: #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.game-placeholder-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.placeholder-tag {
+  font-size: 13px;
+  font-weight: 700;
+  color: #4b5563;
+  letter-spacing: 0.05em;
+  font-style: italic;
+}
+
+/* Bottom Title Bar */
+.game-title-bar {
+  padding: 12px 14px;
+  background-color: #d8dce2;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.game-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Responsive carousel widths */
+@media (max-width: 900px) {
+  .featured-game-card {
+    flex: 0 0 calc((100% - 18px) / 2.3);
+    min-width: 190px;
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-game-card {
+    flex: 0 0 calc(100% - 64px);
+    min-width: 180px;
+  }
+}

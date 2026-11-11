@@ -1,0 +1,13 @@
+/* Clean reset and root setup for Pentagon Creations */
+:root {
+  color-scheme: dark;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}

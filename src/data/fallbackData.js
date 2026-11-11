@@ -1,0 +1,982 @@
+// Development-only fallback dataset for Pentagon Creations
+// Active ONLY when real Sanity project credentials are not configured in .env.local
+
+const createSvgPlaceholder = (label, bg = '#d1d5db', textColor = '#4b5563', width = 600, height = 400) => {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+    <rect width="100%" height="100%" fill="${bg}"/>
+    <rect x="2" y="2" width="${width - 4}" height="${height - 4}" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="2"/>
+    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="${Math.max(13, Math.min(22, Math.round(width / 24)))}" fill="${textColor}" letter-spacing="0.05em">
+      ${label}
+    </text>
+  </svg>`
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`
+}
+
+export const fallbackNewsBox = [
+  {
+    _id: 'sample-news-box-1',
+    isSample: true,
+    titleId: 'News Box: Peluncuran Studio & Visi Kreatif Pentagon Creations',
+    titleEn: 'News Box: Studio Launch & Creative Vision of Pentagon Creations',
+    descriptionId: 'Pentagon Creations menyatukan game, seni lukis, penulisan cerita, dan musik dalam satu ekosistem terpadu.',
+    descriptionEn: 'Pentagon Creations unifies game development, visual art, storytelling, and music in a unified creative ecosystem.',
+    coverImage: createSvgPlaceholder('News Box', '#e2e5e9', '#111827', 800, 600),
+    destinationUrl: '#our-creations',
+    publishedAt: '2026-03-01T00:00:00Z',
+    order: 1,
+  },
+]
+
+export const fallbackReleasedContent = [
+  {
+    _id: 'sample-released-1',
+    isSample: true,
+    titleId: 'Released Content — Alpha Showcase',
+    titleEn: 'Released Content — Alpha Showcase',
+    coverImage: createSvgPlaceholder('Released Content', '#d8dce2', '#111827', 480, 260),
+    destinationUrl: '#featured-games',
+    order: 1,
+  },
+  {
+    _id: 'sample-released-2',
+    isSample: true,
+    titleId: 'Released Content — Soundtrack Vol. 1',
+    titleEn: 'Released Content — Soundtrack Vol. 1',
+    coverImage: createSvgPlaceholder('Released Content', '#d8dce2', '#111827', 480, 260),
+    destinationUrl: '#music',
+    order: 2,
+  },
+  {
+    _id: 'sample-released-3',
+    isSample: true,
+    titleId: 'Released Content — Art Archive',
+    titleEn: 'Released Content — Art Archive',
+    coverImage: createSvgPlaceholder('Released Content', '#d8dce2', '#111827', 480, 260),
+    destinationUrl: '#art-gallery',
+    order: 3,
+  },
+]
+
+export const fallbackNewsInformation = [
+  {
+    _id: 'sample-info-1',
+    isSample: true,
+    titleId: 'News / Information about Pentagon Creations: Pembaruan studio kuartal pertama',
+    titleEn: 'News / Information about Pentagon Creations: First quarter studio update',
+    summaryId: 'Pembaruan roadmap produksi dan rilis karya terbaru tahun ini.',
+    summaryEn: 'Quarterly production roadmap updates and upcoming releases for this year.',
+    publishedAt: '2026-03-20',
+    destinationUrl: '#about-us',
+    order: 1,
+  },
+  {
+    _id: 'sample-info-2',
+    isSample: true,
+    titleId: 'News / Information about Pentagon Creations: Pembukaan pendaftaran uji coba game',
+    titleEn: 'News / Information about Pentagon Creations: Game playtest registration open',
+    summaryId: 'Pemain diundang untuk menjajal purwarupa pertama proyek game terbaru kami.',
+    summaryEn: 'Players are invited to test our initial prototype builds and share feedback.',
+    publishedAt: '2026-03-15',
+    destinationUrl: '#featured-games',
+    order: 2,
+  },
+  {
+    _id: 'sample-info-3',
+    isSample: true,
+    titleId: 'News / Information about Pentagon Creations: Seri web novel kini dapat dibaca',
+    titleEn: 'News / Information about Pentagon Creations: Web novel series now readable',
+    summaryId: 'Bab prolog dari serial fiksi fantasi kami telah diterbitkan.',
+    summaryEn: 'The prologue chapter of our fantasy fiction novel has been released.',
+    publishedAt: '2026-03-10',
+    destinationUrl: '#story-books',
+    order: 3,
+  },
+  {
+    _id: 'sample-info-4',
+    isSample: true,
+    titleId: 'News / Information about Pentagon Creations: Kolaborasi seniman ilustrasi',
+    titleEn: 'News / Information about Pentagon Creations: Illustrator collaboration series',
+    summaryId: 'Karya seni kolaboratif bulanan kini dipamerkan di galeri.',
+    summaryEn: 'Monthly collaborative visual artworks are now exhibited in the gallery.',
+    publishedAt: '2026-03-05',
+    destinationUrl: '#art-gallery',
+    order: 4,
+  },
+  {
+    _id: 'sample-info-5',
+    isSample: true,
+    titleId: 'News / Information about Pentagon Creations: Peluncuran album mini tema orisinal',
+    titleEn: 'News / Information about Pentagon Creations: Original theme EP debut',
+    summaryId: 'Lima trek instrumental kini tersedia di berbagai kanal.',
+    summaryEn: 'Five instrumental tracks are now streaming on selected channels.',
+    publishedAt: '2026-02-28',
+    destinationUrl: '#music',
+    order: 5,
+  },
+  {
+    _id: 'sample-info-6',
+    isSample: true,
+    titleId: 'News / Information about Pentagon Creations: Catatan pengembang edisi Maret',
+    titleEn: 'News / Information about Pentagon Creations: March developer blog notes',
+    summaryId: 'Catatan teknis di balik proses perancangan audio dan seni visual.',
+    summaryEn: 'Technical notes exploring audio and visual design pipelines.',
+    publishedAt: '2026-02-20',
+    destinationUrl: '#about-us',
+    order: 6,
+  },
+]
+
+export const fallbackCreationCategories = [
+  {
+    _id: 'sample-cat-1',
+    isSample: true,
+    titleId: 'Game Development',
+    titleEn: 'Game Development',
+    descriptionId: 'Pengembangan game interaktif dengan perpaduan mekanik mendalam dan estetika visual.',
+    descriptionEn: 'Interactive game development blending nuanced mechanics and artistic direction.',
+    coverImage: createSvgPlaceholder('Game Development', '#d1d5db', '#1f2937', 400, 320),
+    slug: { current: 'game-development' },
+    destinationUrl: '#featured-games',
+    order: 1,
+  },
+  {
+    _id: 'sample-cat-2',
+    isSample: true,
+    titleId: 'Story Writing',
+    titleEn: 'Story Writing',
+    descriptionId: 'Penulisan narasi fiksi, pembangunan semesta orisinal, dan eksplorasi karakter.',
+    descriptionEn: 'Fiction storytelling, original worldbuilding, and multifaceted character arcs.',
+    coverImage: createSvgPlaceholder('Story Writing', '#d1d5db', '#1f2937', 400, 320),
+    slug: { current: 'story-writing' },
+    destinationUrl: '#story-books',
+    order: 2,
+  },
+  {
+    _id: 'sample-cat-3',
+    isSample: true,
+    titleId: 'Drawing Art',
+    titleEn: 'Drawing Art',
+    descriptionId: 'Ilustrasi konsep, rancangan karakter visual, dan eksplorasi estetika mendalam.',
+    descriptionEn: 'Concept illustrations, character design, and distinctive visual aesthetics.',
+    coverImage: createSvgPlaceholder('Drawing Art', '#d1d5db', '#1f2937', 400, 320),
+    slug: { current: 'drawing-art' },
+    destinationUrl: '#art-gallery',
+    order: 3,
+  },
+  {
+    _id: 'sample-cat-4',
+    isSample: true,
+    titleId: 'Music',
+    titleEn: 'Music',
+    descriptionId: 'Gubahan musik sinematik, aransemen instrumental, dan tata suara orisinal.',
+    descriptionEn: 'Cinematic compositions, ambient soundscapes, and original audio scores.',
+    coverImage: createSvgPlaceholder('Music', '#d1d5db', '#1f2937', 400, 320),
+    slug: { current: 'music' },
+    destinationUrl: '#music',
+    order: 4,
+  },
+]
+
+export const fallbackFeaturedGames = [
+  {
+    _id: 'sample-game-1',
+    isSample: true,
+    titleId: 'Echoes of the Pentagon',
+    titleEn: 'Echoes of the Pentagon',
+    badgeTextId: 'BARU',
+    badgeTextEn: 'NEW',
+    descriptionId: 'Game petualangan naratif misterius di mana setiap dimensi waktu terhubung dalam teka-teki.',
+    descriptionEn: 'A narrative mystery adventure exploring interdimensional puzzles and timeline convergence.',
+    coverImage: createSvgPlaceholder('COVER\nIMAGE', '#d4d8dd', '#4b5563', 320, 480),
+    releaseStatus: 'released',
+    featured: true,
+    slug: { current: 'echoes-of-the-pentagon' },
+    destinationUrl: 'https://store.steampowered.com',
+    order: 1,
+  },
+  {
+    _id: 'sample-game-2',
+    isSample: true,
+    titleId: 'Astra Chronicles: Lumina',
+    titleEn: 'Astra Chronicles: Lumina',
+    badgeTextId: 'BARU',
+    badgeTextEn: 'NEW',
+    descriptionId: 'Action RPG bergaya artistik dengan pertarungan dinamis dan eksplorasi dunia terbuka.',
+    descriptionEn: 'Stylized action RPG featuring dynamic swordplay and atmospheric open ruin exploration.',
+    coverImage: createSvgPlaceholder('COVER\nIMAGE', '#d4d8dd', '#4b5563', 320, 480),
+    releaseStatus: 'in_development',
+    featured: true,
+    slug: { current: 'astra-chronicles' },
+    destinationUrl: 'https://store.steampowered.com',
+    order: 2,
+  },
+  {
+    _id: 'sample-game-3',
+    isSample: true,
+    titleId: 'Shadows in Canvas',
+    titleEn: 'Shadows in Canvas',
+    badgeTextId: 'DEMO',
+    badgeTextEn: 'DEMO',
+    descriptionId: 'Game teka-teki monokromatik di mana bayangan dan goresan kanvas menjadi jalan keluar.',
+    descriptionEn: 'Monochromatic puzzle experience where canvas strokes and shadows create paths.',
+    coverImage: createSvgPlaceholder('COVER\nIMAGE', '#d4d8dd', '#4b5563', 320, 480),
+    releaseStatus: 'demo',
+    featured: true,
+    slug: { current: 'shadows-in-canvas' },
+    destinationUrl: 'https://itch.io',
+    order: 3,
+  },
+  {
+    _id: 'sample-game-4',
+    isSample: true,
+    titleId: 'Harmonic Quest',
+    titleEn: 'Harmonic Quest',
+    badgeTextId: 'SEGERA',
+    badgeTextEn: 'UPCOMING',
+    descriptionId: 'Rhythm platformer yang menyelaraskan pergerakan karakter dengan simfoni orkestra.',
+    descriptionEn: 'A rhythmic platforming odyssey synced precisely to full orchestral movements.',
+    coverImage: createSvgPlaceholder('COVER\nIMAGE', '#d4d8dd', '#4b5563', 320, 480),
+    releaseStatus: 'testing',
+    featured: true,
+    slug: { current: 'harmonic-quest' },
+    destinationUrl: 'https://store.steampowered.com',
+    order: 4,
+  },
+  {
+    _id: 'sample-game-5',
+    isSample: true,
+    titleId: 'Nebula Drift: Zero',
+    titleEn: 'Nebula Drift: Zero',
+    badgeTextId: 'DEMO',
+    badgeTextEn: 'DEMO',
+    descriptionId: 'Simulator balap gravitasi nol berlatarbelakang sabuk asteroid terisolasi di tepi tata surya.',
+    descriptionEn: 'Zero-gravity vector racer set across isolated planetary rings and deep space relays.',
+    coverImage: createSvgPlaceholder('COVER\nIMAGE', '#d4d8dd', '#4b5563', 320, 480),
+    releaseStatus: 'demo',
+    featured: true,
+    slug: { current: 'nebula-drift' },
+    destinationUrl: 'https://store.steampowered.com',
+    order: 5,
+  },
+  {
+    _id: 'sample-game-6',
+    isSample: true,
+    titleId: 'Valkyrie Ascent',
+    titleEn: 'Valkyrie Ascent',
+    badgeTextId: 'BARU',
+    badgeTextEn: 'NEW',
+    descriptionId: 'Platformer taktis vertikal berkecepatan tinggi dengan pertarungan berbasis ritme dan gravitasi.',
+    descriptionEn: 'High-speed vertical precision platformer combining kinetic grappling with rhythm combat.',
+    coverImage: createSvgPlaceholder('COVER\nIMAGE', '#d4d8dd', '#4b5563', 320, 480),
+    releaseStatus: 'released',
+    featured: true,
+    slug: { current: 'valkyrie-ascent' },
+    destinationUrl: 'https://store.steampowered.com',
+    order: 6,
+  },
+]
+
+export const fallbackStoryBooks = [
+  {
+    _id: 'sample-story-1',
+    isSample: true,
+    titleId: 'The Last Pentagram',
+    titleEn: 'The Last Pentagram',
+    premiseId: 'Seorang arsiparis muda menemukan artefak yang mampu membalikkan waktu.',
+    premiseEn: 'Premise: A young archivist discovers an artifact capable of turning back time.',
+    descriptionId: 'Di perpustakaan kekaisaran yang runtuh, satu-satunya manuskrip tersisa membuka gerbang ke masa lalu.',
+    descriptionEn: 'In the ruins of the imperial library, the final preserved manuscript unlocks gates to forgotten eras.',
+    coverImage: createSvgPlaceholder('COVER', '#111827', '#9ca3af', 340, 260),
+    author: 'Pentagon Literary Circle',
+    genre: 'Dark Fantasy',
+    slug: { current: 'the-last-pentagram' },
+    destinationUrl: '#',
+    order: 1,
+    contentId: [
+      {
+        _type: 'block',
+        style: 'h2',
+        children: [{ _type: 'span', text: 'Bab I — Bayang-Bayang di Kubah Obsidian' }],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'Debu berusia tiga abad melayang lambat di bawah temaram lentera kristal. Elian menggeser tangga kayu berderit menyusuri rak setinggi lima belas hasta, jemarinya yang terbalut sarung tangan sutra kelabu menyapu punggung kitab-kitab kulit domba. Perpustakaan Kekaisaran Aethelgard telah dikunci semenjak perang musim gugur berakhir, namun bagi seorang juru arsip, segel penguasa hanyalah tantangan sekunder dibandingkan ancaman rayap waktu.',
+          },
+        ],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'Di sudut terdalam relung barat, di balik rak berkas silsilah yang telah membusuk, sebuah lempengan kuningan dingin menonjol setengah jengkal dari plester batu. Permukaannya diukir dengan lima sisi geometris sempurna—lambang pentagram purba yang keberadaannya dilarang keras oleh para tetua konsil sejak seratus tahun silam.',
+          },
+        ],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'Ketika jemari Elian menyentuh cekungan pusat lempeng itu, udara di sekitarnya mendadak sunyi. Detik jarum jam pendulum tembaga di kejauhan terhenti. Debu yang tadinya melayang turun terdiam kaku di udara, dan bayang-bayang di lantai mulai merayap mundur ke arah kaki-kaki meja.',
+          },
+        ],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'Sebuah bisikan lembut bergema langsung di rongga kepalanya, bukan melalui telinga, melainkan terpatri bagai tinta panas pada dinding ingatan: "Waktu bukanlah benang lurus, anak manusia. Ia adalah lingkar tenun yang menunggu jari yang berani membalikkan arah pintalan."',
+          },
+        ],
+      },
+    ],
+    contentEn: [
+      {
+        _type: 'block',
+        style: 'h2',
+        children: [{ _type: 'span', text: 'Chapter I — Shadows Beneath the Obsidian Dome' }],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'Dust three centuries old drifted lazily through the dim glow of crystal lantern-light. Elian slid the creaking wooden ladder along shelves fifteen cubits high, his fingers encased in grey silk gloves as they brushed against spines of sheepskin and vellum. The Grand Imperial Archive of Aethelgard had been sealed since the autumn wars ended, yet for an archivist, royal seals were merely polite suggestions when compared to the creeping rot of time.',
+          },
+        ],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'Deep in the western alcove, nestled behind crumbling genealogical rolls, a cold brass plate protruded half an inch from the ashlar masonry. Its face bore five geometric facets etched in uncanny symmetry—the ancient pentagram cipher, an emblem strictly forbidden by council decree for over a century.',
+          },
+        ],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'The moment Elian pressed the hollow center of the cipher, the ambient atmosphere froze into unearthly stillness. The distant tick of the copper pendulum ceased. Dust suspended mid-air hovered without falling, and shadows on the flagstones began receding like tides turning back into the sea.',
+          },
+        ],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'A whispered cadence reverberated within his mind, felt rather than heard, searing like hot ink upon memory: "Time is not a solitary thread, child of dust. It is a loom awaiting the hand audacious enough to reverse its weave."',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    _id: 'sample-story-2',
+    isSample: true,
+    titleId: 'Chronicles of Aethelgard',
+    titleEn: 'Chronicles of Aethelgard',
+    premiseId: 'Dua kerajaan terikat sumpah hening menghadapi musim dingin abadi.',
+    premiseEn: 'Premise: Two kingdoms bound by a silent oath face an endless celestial winter.',
+    descriptionId: 'Kisah intrik takhta dan persahabatan rahasia di tengah perpecahan dua wangsa besar.',
+    descriptionEn: 'A sweeping tale of court intrigue and secret alliances beneath frozen mountain ranges.',
+    coverImage: createSvgPlaceholder('COVER', '#111827', '#9ca3af', 340, 260),
+    author: 'Pentagon Literary Circle',
+    genre: 'Epic Fantasy',
+    slug: { current: 'chronicles-of-aethelgard' },
+    destinationUrl: '#',
+    order: 2,
+    contentId: [
+      {
+        _type: 'block',
+        style: 'h2',
+        children: [{ _type: 'span', text: 'Prolog — Salju Pertama di Menara Utara' }],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'Musim dingin tahun ini datang lebih cepat lima puluh purnama. Ketika embun beku pertama menyelimuti mahkota pinus di Lembah Valen, dua orang penunggang kuda berhenti di tepi jurang pemisah. Keduanya mengenakan mantel wol tanpa lambang kebesaran—tanda kesepakatan bahwa pertemuan malam itu tidak pernah terjadi dalam catatan pengadilan istana.',
+          },
+        ],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: '"Perbatasan kita tidak akan bertahan jika badai glasial mencapai garis sungai," ucap Kaelen, suaranya teredam uap napas yang mengkristal di udara dingin. "Para peramal telah melihat bayangan raksasa di balik kabut utara. Kita harus membuka gerbang cadangan."',
+          },
+        ],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'Serafina menatap ke dasar ngarai yang mulai memutih. "Jika kita membuka gerbang itu, kaum bangsawan Valen akan menuduh kita berkhianat. Namun jika kita membiarkannya tertutup, tidak akan ada kerajaan yang tersisa untuk diperintah musim semi mendatang."',
+          },
+        ],
+      },
+    ],
+    contentEn: [
+      {
+        _type: 'block',
+        style: 'h2',
+        children: [{ _type: 'span', text: 'Prologue — First Frost Upon the North Spire' }],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'Winter arrived fifty moons ahead of season. When first frost veiled the pine ridges of the Valen Divide, two riders halted upon the lip of the canyon. Both wore uncrested wool cloaks—the tacit sign that this twilight parley would never stain the formal court annals of either realm.',
+          },
+        ],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: '"Our southern palisades cannot endure should the glacial front reach the river locks," Kaelen warned, his words crystallizing in the biting air. "The watchers on the crag saw towers moving behind the blizzard fog. We must unseal the mountain sally-ports."',
+          },
+        ],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'Serafina peered into the gorge as twilight deepened into iron blue. "Unsealing the sally-ports brands us traitors before the High Moot. Yet keeping them shut leaves no realm alive to judge us when the thaw never comes."',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    _id: 'sample-story-3',
+    isSample: true,
+    titleId: 'Echoes Beyond the Veil',
+    titleEn: 'Echoes Beyond the Veil',
+    premiseId: 'Bisikan dari perbatasan langit menuntut jawaban yang tak boleh diucapkan.',
+    premiseEn: 'Premise: Whispers from the astral border demand an answer long forbidden to speak.',
+    descriptionId: 'Ketika frekuensi kosmik tertangkap menara radio terpencil, kehidupan seorang operator berubah selamanya.',
+    descriptionEn: 'When cosmic radio frequencies breach an isolated relay tower, an operator uncovers forbidden truth.',
+    coverImage: createSvgPlaceholder('COVER', '#111827', '#9ca3af', 340, 260),
+    author: 'Pentagon Literary Circle',
+    genre: 'Sci-Fi Mystery',
+    slug: { current: 'echoes-beyond-the-veil' },
+    destinationUrl: '#',
+    order: 3,
+    contentId: [
+      {
+        _type: 'block',
+        style: 'h2',
+        children: [{ _type: 'span', text: 'Transmisi 04 — Gelombang Malam' }],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'Pukul 03:14 dini hari, jarum analog osiloskop pada Stasiun Relai Orion melompat tajam ke batas maksimum. Maya mengerjap menyingkirkan kantuk, headphone bermangkuk kulit di kepalanya bergetar oleh desis statis yang aneh—bukan dengungan ionosfer biasa, melainkan pola ritmis dengan interval prima 13 detik.',
+          },
+        ],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'Ia menekan tuas perekam pita magnetik. Di antara gelombang statis, ada suara yang bernapas lambat dan teratur, seolah sebuah entitas raksasa sedang menempelkan bibirnya langsung ke corong antena penerima di atap menara berkabut.',
+          },
+        ],
+      },
+    ],
+    contentEn: [
+      {
+        _type: 'block',
+        style: 'h2',
+        children: [{ _type: 'span', text: 'Transmission 04 — Midnight Waveforms' }],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'At 03:14 in the morning, the needle of the analog oscilloscope at Orion Relay Station slammed into its red boundary. Maya blinked back exhaustion, the heavy leather headphones pressing hard against her ears as an uncanny rhythm emerged through cosmic static—not ionospheric noise, but structured intervals spaced precisely thirteen seconds apart.',
+          },
+        ],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'She locked down the magnetic tape spool. Beneath the hum, an exhalation rose—rhythmic, colossal, and deliberate, as though a creature born between star systems were leaning its mouth directly against the frosted dish atop the tower.',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    _id: 'sample-story-4',
+    isSample: true,
+    titleId: 'The Obsidian Quill',
+    titleEn: 'The Obsidian Quill',
+    premiseId: 'Setiap goresan tinta darah membentuk kenyataan yang sedang terjaga.',
+    premiseEn: 'Premise: Every stroke of obsidian ink alters the waking fabric of reality.',
+    descriptionId: 'Seorang kaligrafer terkutuk menyadari bahwa karya tulisnya menjadi kenyataan esok harinya.',
+    descriptionEn: 'A cursed scribe discovers that every passage written overnight manifests in the morning streets.',
+    coverImage: createSvgPlaceholder('COVER', '#111827', '#9ca3af', 340, 260),
+    author: 'Pentagon Literary Circle',
+    genre: 'Gothic Mystery',
+    slug: { current: 'the-obsidian-quill' },
+    destinationUrl: '#',
+    order: 4,
+    contentId: [
+      {
+        _type: 'block',
+        style: 'h2',
+        children: [{ _type: 'span', text: 'Catatan Pertama — Tinta yang Tidak Pernah Mengering' }],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'Pena itu terbuat dari obsidian murni dengan ujung runcing berkilau keunguan. Silas menemukannya di celah lantai studio kaligrafinya setelah gempa kecil yang mengguncang kota bawah. Tidak ada botol tinta yang menyertainya; pena itu menghisap embun malam dan mengubahnya menjadi pigmen pekat sewarna darah kental.',
+          },
+        ],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'Kalimat pertama yang ditulisnya hanyalah sebuah lamunan iseng: "Hujan bunga api akan turun perlahan di alun-alun barat saat lonceng tengah malam berdentang." Namun ketika tengah malam tiba, langit kota benar-benar bermandikan pendaran emas keemasan yang membakar atap-atap jerami.',
+          },
+        ],
+      },
+    ],
+    contentEn: [
+      {
+        _type: 'block',
+        style: 'h2',
+        children: [{ _type: 'span', text: 'First Entry — Ink That Refuses to Dry' }],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'The quill was cut from unbroken volcanic glass, its needle-fine nib gleaming with a faint violet sheen. Silas found it wedged between floorboards after the twilight tremor that shook the lower quarter. No inkpot accompanied it; the nib drew moisture from midnight air, condensing it into a thick pigment resembling congealed blood.',
+          },
+        ],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'His opening sentence was written in idle melancholy: "A shower of quiet sparks shall descend over the west square when the curfew bell strikes twelve." Yet when midnight arrived, the cobblestones below were illuminated by falling golden embers dancing in the wind.',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    _id: 'sample-story-5',
+    isSample: true,
+    titleId: 'Silent Constellations',
+    titleEn: 'Silent Constellations',
+    premiseId: 'Pengamat bintang kesepian menerjemahkan sinyal dari galaksi yang telah padam.',
+    premiseEn: 'Premise: A lonely stargazer decodes rhythmic pulses from a dead galaxy.',
+    descriptionId: 'Perjalanan melintasi memori bintang-bintang mati dan peradaban yang hilang beribu tahun silam.',
+    descriptionEn: 'A journey across the memory archives of extinct civilizations preserved in dying stellar pulses.',
+    coverImage: createSvgPlaceholder('COVER', '#111827', '#9ca3af', 340, 260),
+    author: 'Pentagon Literary Circle',
+    genre: 'Atmospheric Drama',
+    slug: { current: 'silent-constellations' },
+    destinationUrl: '#',
+    order: 5,
+    contentId: [
+      {
+        _type: 'block',
+        style: 'h2',
+        children: [{ _type: 'span', text: 'Observasi 09 — Sisa Cahaya Masa Lalu' }],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'Bintang itu telah lenyap enam juta tahun sebelum manusia pertama mengarahkan matanya ke angkasa. Namun bagi lensa teleskop tembaga di Puncak Caelum, cahayanya baru saja tiba malam ini. Cahaya yang membawa arsip melodi, arsitektur, dan nama-nama yang telah terhapus dari peta alam semesta.',
+          },
+        ],
+      },
+    ],
+    contentEn: [
+      {
+        _type: 'block',
+        style: 'h2',
+        children: [{ _type: 'span', text: 'Observation 09 — Remnants of Past Lumens' }],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'That distant star collapsed six million orbits before human eyes first traced the constellations. Yet upon the curved mirrors of Caelum Observatory, its ghost light arrived only tonight—carrying encoded symphonies, structural schematics, and names erased from cosmic memory.',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    _id: 'sample-story-6',
+    isSample: true,
+    titleId: 'Song of the Iron Shore',
+    titleEn: 'Song of the Iron Shore',
+    premiseId: 'Pelarian yang kembali pulang demi menebus melodi kuno tanah leluhurnya.',
+    premiseEn: 'Premise: An exile returns across iron seas to reclaim an ancient ancestral tune.',
+    descriptionId: 'Balada kepahlawanan di pesisir utara di mana nyanyian badai membimbing para pengembara.',
+    descriptionEn: 'A ballad of northern shores where tempest hymns guide navigators toward redemption.',
+    coverImage: createSvgPlaceholder('COVER', '#111827', '#9ca3af', 340, 260),
+    author: 'Pentagon Literary Circle',
+    genre: 'Mythic Folklore',
+    slug: { current: 'song-of-the-iron-shore' },
+    destinationUrl: '#',
+    order: 6,
+    contentId: [
+      {
+        _type: 'block',
+        style: 'h2',
+        children: [{ _type: 'span', text: 'Balada I — Ombak Hitam' }],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'Batu karang di Pesisir Besi tidak pernah berwarna cokelat atau keemasan; mereka hitam pekat dan berbau garam belerang. Nelayan tua mengatakan laut itu sendiri tercipta dari air mata naga purba yang tidur di bawah palung terdalam.',
+          },
+        ],
+      },
+    ],
+    contentEn: [
+      {
+        _type: 'block',
+        style: 'h2',
+        children: [{ _type: 'span', text: 'Ballad I — The Black Tides' }],
+      },
+      {
+        _type: 'block',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            text: 'The cliffs of the Iron Shore are neither golden nor earth-brown; they are jet black, smelling of brine and subterranean basalt. Elder mariners tell that the sea itself was filled from the grief of an elder dragon dreaming beneath the abyss.',
+          },
+        ],
+      },
+    ],
+  },
+]
+
+export const fallbackArtworks = [
+  // Layout arrangement matching the screenshot's asymmetric 4 columns:
+  {
+    _id: 'sample-art-1',
+    isSample: true,
+    titleId: 'Monolith in the Fog',
+    titleEn: 'Monolith in the Fog',
+    artist: 'Pentagon Art Division',
+    descriptionId: 'Studi pencahayaan monokromatik dan struktur arsitektur monumental di padang kabut.',
+    descriptionEn: 'Monochrome lighting study capturing monumental brutalist structures across a foggy plain.',
+    image: createSvgPlaceholder('Artwork 01', '#d4d8dd', '#374151', 400, 520),
+    aspectRatioStyle: 'portrait',
+    order: 1,
+  },
+  {
+    _id: 'sample-art-2',
+    isSample: true,
+    titleId: 'Horizon at Twilight',
+    titleEn: 'Horizon at Twilight',
+    artist: 'Pentagon Art Division',
+    descriptionId: 'Garis cakrawala minimalis dengan gradasi halus antara gelap dan terang.',
+    descriptionEn: 'Minimalist horizon with subtle tonal gradation between twilight shadows and ambient sky.',
+    image: createSvgPlaceholder('Artwork 02', '#d4d8dd', '#374151', 400, 260),
+    aspectRatioStyle: 'landscape',
+    order: 2,
+  },
+  {
+    _id: 'sample-art-3',
+    isSample: true,
+    titleId: 'Geometrics in Solitude',
+    titleEn: 'Geometrics in Solitude',
+    artist: 'Pentagon Art Division',
+    descriptionId: 'Eksplorasi komposisi bentuk kubus dan silinder dalam ruang hampa.',
+    descriptionEn: 'Compositional study of planar geometry floating within negative space.',
+    image: createSvgPlaceholder('Artwork 03', '#d4d8dd', '#374151', 400, 300),
+    aspectRatioStyle: 'square',
+    order: 3,
+  },
+  {
+    _id: 'sample-art-4',
+    isSample: true,
+    titleId: 'The Silent Sentinel',
+    titleEn: 'The Silent Sentinel',
+    artist: 'Pentagon Art Division',
+    descriptionId: 'Konsep desain karakter penjaga kuil kuno dengan armor bertekstur kasar.',
+    descriptionEn: 'Character concept art of a silent guardian adorned with weathered slate armour.',
+    image: createSvgPlaceholder('Artwork 04', '#d4d8dd', '#374151', 400, 480),
+    aspectRatioStyle: 'extra-tall',
+    order: 4,
+  },
+  {
+    _id: 'sample-art-5',
+    isSample: true,
+    titleId: 'Labyrinth of Echoes',
+    titleEn: 'Labyrinth of Echoes',
+    artist: 'Pentagon Art Division',
+    descriptionId: 'Perspektif interior arsitektur lorong bertingkat dengan pencahayaan dramatis.',
+    descriptionEn: 'Interior perspective study of tiered corridors illuminated by high slit windows.',
+    image: createSvgPlaceholder('Artwork 05', '#d4d8dd', '#374151', 400, 440),
+    aspectRatioStyle: 'portrait',
+    order: 5,
+  },
+  {
+    _id: 'sample-art-6',
+    isSample: true,
+    titleId: 'Nocturnal Whispers',
+    titleEn: 'Nocturnal Whispers',
+    artist: 'Pentagon Art Division',
+    descriptionId: 'Ilustrasi suasana malam bertabur serbuk cahaya di antara ranting pohon cemara.',
+    descriptionEn: 'Atmospheric nocturnal forest study bathed in gentle luminous particulate.',
+    image: createSvgPlaceholder('Artwork 06', '#d4d8dd', '#374151', 400, 340),
+    aspectRatioStyle: 'landscape',
+    order: 6,
+  },
+  {
+    _id: 'sample-art-7',
+    isSample: true,
+    titleId: 'Prism of Shadows',
+    titleEn: 'Prism of Shadows',
+    artist: 'Pentagon Art Division',
+    descriptionId: 'Refraksi cahaya tajam melalui prisma kristal gelap berdimensi lima.',
+    descriptionEn: 'Hard shadow refraction through a five-sided crystalline obsidian core.',
+    image: createSvgPlaceholder('Artwork 07', '#d4d8dd', '#374151', 400, 400),
+    aspectRatioStyle: 'portrait',
+    order: 7,
+  },
+  {
+    _id: 'sample-art-8',
+    isSample: true,
+    titleId: 'Vessel in Orbit',
+    titleEn: 'Vessel in Orbit',
+    artist: 'Pentagon Art Division',
+    descriptionId: 'Siluet wahana eksplorasi melintasi cincin planet gas raksasa.',
+    descriptionEn: 'Exploration vessel silhouette transiting above gaseous planetary ring lines.',
+    image: createSvgPlaceholder('Artwork 08', '#d4d8dd', '#374151', 400, 380),
+    aspectRatioStyle: 'landscape',
+    order: 8,
+  },
+  // Additional artworks for testing Drawing Art gallery scaling and dedicated page
+  {
+    _id: 'sample-art-9',
+    isSample: true,
+    titleId: 'Fractured Mirrors',
+    titleEn: 'Fractured Mirrors',
+    artist: 'Pentagon Art Division',
+    descriptionId: 'Refleksi kristalin pecahan cermin membiaskan rasi bintang di padang salju.',
+    descriptionEn: 'Crystalline mirror shards refracting constellations over a silent snowfield.',
+    image: createSvgPlaceholder('Artwork 09', '#d4d8dd', '#374151', 400, 480),
+    aspectRatioStyle: 'portrait',
+    order: 9,
+  },
+  {
+    _id: 'sample-art-10',
+    isSample: true,
+    titleId: 'The Obsidian Spire',
+    titleEn: 'The Obsidian Spire',
+    artist: 'Pentagon Art Division',
+    descriptionId: 'Menara monolitik menjulang menembus lapisan awan badai elektrik.',
+    descriptionEn: 'Monolithic spire piercing through charged electrical thunderheads.',
+    image: createSvgPlaceholder('Artwork 10', '#d4d8dd', '#374151', 400, 320),
+    aspectRatioStyle: 'landscape',
+    order: 10,
+  },
+  {
+    _id: 'sample-art-11',
+    isSample: true,
+    titleId: 'Echoing Hollows',
+    titleEn: 'Echoing Hollows',
+    artist: 'Pentagon Art Division',
+    descriptionId: 'Kedalaman gua basalt bawah tanah dengan tetesan air bercahaya fosfor.',
+    descriptionEn: 'Underground basalt cavern bathed in phosphorescent mineral glow.',
+    image: createSvgPlaceholder('Artwork 11', '#d4d8dd', '#374151', 400, 420),
+    aspectRatioStyle: 'portrait',
+    order: 11,
+  },
+  {
+    _id: 'sample-art-12',
+    isSample: true,
+    titleId: 'Celestial Gateway',
+    titleEn: 'Celestial Gateway',
+    artist: 'Pentagon Art Division',
+    descriptionId: 'Gerbang antarbintang kuno yang terbuka di atas danau cermin yang tenang.',
+    descriptionEn: 'Ancient interstellar ring gateway awakened above a tranquil glassy lake.',
+    image: createSvgPlaceholder('Artwork 12', '#d4d8dd', '#374151', 400, 360),
+    aspectRatioStyle: 'landscape',
+    order: 12,
+  },
+]
+
+export const fallbackMusic = [
+  {
+    _id: 'sample-music-1',
+    isSample: true,
+    titleId: 'Theme of Origin',
+    titleEn: 'Theme of Origin',
+    artist: 'Pentagon Sound Lab',
+    coverImage: createSvgPlaceholder('Music 01', '#d1d5db', '#111827', 300, 300),
+    destinationUrl: 'https://spotify.com',
+    streamingUrl: 'https://spotify.com',
+    order: 1,
+  },
+  {
+    _id: 'sample-music-2',
+    isSample: true,
+    titleId: 'Nocturne in Grey',
+    titleEn: 'Nocturne in Grey',
+    artist: 'Pentagon Sound Lab',
+    coverImage: createSvgPlaceholder('Music 02', '#d1d5db', '#111827', 300, 300),
+    destinationUrl: 'https://spotify.com',
+    streamingUrl: 'https://spotify.com',
+    order: 2,
+  },
+  {
+    _id: 'sample-music-3',
+    isSample: true,
+    titleId: 'Resonance',
+    titleEn: 'Resonance',
+    artist: 'Pentagon Sound Lab',
+    coverImage: createSvgPlaceholder('Music 03', '#d1d5db', '#111827', 300, 300),
+    destinationUrl: 'https://spotify.com',
+    streamingUrl: 'https://spotify.com',
+    order: 3,
+  },
+  {
+    _id: 'sample-music-4',
+    isSample: true,
+    titleId: 'Fragments of Sky',
+    titleEn: 'Fragments of Sky',
+    artist: 'Pentagon Sound Lab',
+    coverImage: createSvgPlaceholder('Music 04', '#d1d5db', '#111827', 300, 300),
+    destinationUrl: 'https://spotify.com',
+    streamingUrl: 'https://spotify.com',
+    order: 4,
+  },
+  {
+    _id: 'sample-music-5',
+    isSample: true,
+    titleId: 'Echoes of Eternity',
+    titleEn: 'Echoes of Eternity',
+    artist: 'Pentagon Sound Lab',
+    coverImage: createSvgPlaceholder('Music 05', '#d1d5db', '#111827', 300, 300),
+    destinationUrl: 'https://spotify.com',
+    streamingUrl: 'https://spotify.com',
+    order: 5,
+  },
+  {
+    _id: 'sample-music-6',
+    isSample: true,
+    titleId: 'Whispering Pines',
+    titleEn: 'Whispering Pines',
+    artist: 'Pentagon Sound Lab',
+    coverImage: createSvgPlaceholder('Music 06', '#d1d5db', '#111827', 300, 300),
+    destinationUrl: 'https://spotify.com',
+    streamingUrl: 'https://spotify.com',
+    order: 6,
+  },
+  {
+    _id: 'sample-music-7',
+    isSample: true,
+    titleId: 'Abyssal Symphony',
+    titleEn: 'Abyssal Symphony',
+    artist: 'Pentagon Sound Lab',
+    coverImage: createSvgPlaceholder('Music 07', '#d1d5db', '#111827', 300, 300),
+    destinationUrl: 'https://spotify.com',
+    streamingUrl: 'https://spotify.com',
+    order: 7,
+  },
+]
+
+export const fallbackSiteSettings = {
+  _id: 'sample-site-settings',
+  isSample: true,
+  brandName: 'PENTAGON CREATIONS',
+  aboutHeadingId: 'Tentang Kami',
+  aboutHeadingEn: 'About Us',
+  aboutId:
+    'Pentagon Creations adalah studio kreatif independen yang bergerak di bidang game development, penulisan cerita, seni gambar, dan aransemen musik. Didirikan dengan keyakinan bahwa karya bermakna lahir ketika narasi mendalam, seni visual yang kuat, dan desain interaktif bersatu secara harmonis. Kami terus bereksplorasi untuk menciptakan pengalaman yang menggugah dan bertahan lama bagi penikmat di seluruh dunia.',
+  aboutEn:
+    'Pentagon Creations is an independent creative studio focused on game development, storytelling, visual art, and music composition. Built on the conviction that timeless work emerges when deep narratives, uncompromising aesthetics, and thoughtful interactivity converge. We continuously craft worlds, lore, and sonic journeys that resonate with audiences worldwide.',
+  mediaLinks: [
+    { labelId: 'Press Kit & Aset Media', labelEn: 'Press Kit & Brand Assets', url: '#' },
+    { labelId: 'Katalog Trailer Video', labelEn: 'Trailer & Video Archive', url: '#' },
+    { labelId: 'Rilis Pers Terbaru', labelEn: 'Latest Press Releases', url: '#' },
+  ],
+  contactLinks: [
+    { labelId: 'Pertanyaan Umum & Studio', labelEn: 'General & Studio Inquiries', url: 'mailto:contact@pentagoncreations.com' },
+    { labelId: 'Kolaborasi & Kemitraan', labelEn: 'Creative Partnerships', url: 'mailto:collaborate@pentagoncreations.com' },
+    { labelId: 'Karier & Magang', labelEn: 'Careers & Opportunities', url: '#' },
+  ],
+  gameReleaseLinks: [
+    { labelId: 'Halaman Toko Steam', labelEn: 'Steam Storefront', url: 'https://store.steampowered.com' },
+    { labelId: 'Catatan Pembaruan Rilis', labelEn: 'Release & Patch Notes', url: '#' },
+    { labelId: 'Komunitas Discord Studio', labelEn: 'Studio Community Discord', url: 'https://discord.com' },
+  ],
+  socialLinks: [
+    { platform: 'X / Twitter', url: 'https://twitter.com' },
+    { platform: 'YouTube', url: 'https://youtube.com' },
+    { platform: 'Discord', url: 'https://discord.com' },
+    { platform: 'ArtStation', url: 'https://artstation.com' },
+  ],
+}

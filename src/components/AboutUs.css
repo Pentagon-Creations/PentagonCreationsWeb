@@ -1,0 +1,36 @@
+.section-about-us {
+  background-color: var(--bg-black);
+  color: var(--text-white);
+  padding-top: 48px;
+  padding-bottom: 72px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.about-title {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin-bottom: 32px;
+}
+
+/* Generous negative space echoing screenshot */
+.about-content-wrapper {
+  max-width: 860px;
+  min-height: 120px;
+}
+
+.about-text-body p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #d1d5db;
+  letter-spacing: 0.01em;
+}
+
+.about-empty-state {
+  color: #6b7280;
+  font-size: 13px;
+  font-style: italic;
+  padding: 24px 0;
+}
+

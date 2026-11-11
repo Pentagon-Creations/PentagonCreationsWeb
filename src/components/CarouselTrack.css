@@ -1,0 +1,93 @@
+.carousel-track-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-scroll-container {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 6px 2px 14px 2px;
+  /* Hide scrollbar on Chrome, Safari and Opera */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+/* Hide scrollbar when there is no overflow */
+.carousel-scroll-container.no-overflow {
+  overflow-x: hidden;
+  scrollbar-width: none;
+  padding-bottom: 6px;
+}
+
+.carousel-scroll-container::-webkit-scrollbar {
+  height: 4px;
+}
+
+.carousel-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.carousel-scroll-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+/* In dark sections, adjust scrollbar thumb */
+.section-music .carousel-scroll-container::-webkit-scrollbar-thumb,
+.section-art-gallery .carousel-scroll-container::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Navigation Arrow Buttons */
+.carousel-nav-btn {
+  position: absolute;
+  top: calc(50% - 10px);
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(17, 24, 39, 0.85);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: all 0.15s ease;
+  backdrop-filter: blur(4px);
+}
+
+.carousel-nav-btn:hover:not(:disabled) {
+  background: #000000;
+  transform: translateY(-50%) scale(1.08);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.carousel-nav-btn.prev {
+  left: -16px;
+}
+
+.carousel-nav-btn.next {
+  right: -16px;
+}
+
+.carousel-nav-btn.is-disabled,
+.carousel-nav-btn:disabled {
+  opacity: 0;
+  pointer-events: none;
+  cursor: default;
+}
+
+@media (max-width: 768px) {
+  .carousel-nav-btn {
+    display: none; /* Mobile and small tablets use touch swiping */
+  }
+}
+

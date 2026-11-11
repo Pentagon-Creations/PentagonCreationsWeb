@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <style>
+      .pentagon-ring {
+        animation: rotateRing 3s infinite linear;
+        transform-origin: 60px 60px;
+      }
+      .inner-pulse {
+        animation: pulseScale 1.8s infinite ease-in-out;
+        transform-origin: 60px 60px;
+      }
+      @keyframes rotateRing {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      @keyframes pulseScale {
+        0%, 100% { transform: scale(0.92); opacity: 0.85; }
+        50% { transform: scale(1.08); opacity: 1; }
+      }
+    </style>
+  </defs>
+  
+  <!-- Outer Pentagon Guide Ring -->
+  <circle cx="60" cy="60" r="50" fill="none" stroke="#2b2723" stroke-width="2" stroke-dasharray="8 6" opacity="0.3" />
+  
+  <!-- Rotating Pentagon Geometric Shape -->
+  <polygon class="pentagon-ring" points="60,18 98,46 84,90 36,90 22,46" fill="none" stroke="#2b2723" stroke-width="3.5" stroke-linejoin="round" />
+  
+  <!-- Center Pulsing Core -->
+  <circle class="inner-pulse" cx="60" cy="60" r="14" fill="#2b2723" />
+  <circle cx="60" cy="60" r="6" fill="#fbf5e6" />
+</svg>
+
