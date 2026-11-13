@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pentagon-creations.github.io/PentagonCreationsWeb/sitemap.xml
