@@ -12,7 +12,7 @@ export const HOME_GALLERY_LIMIT = 8
 /**
  * Path to the logo GIF displayed on loading screens.
  */
-export const BOOK_LOADING_GIF_PATH = '/assets/pentashuriken-logo-anim.gif'
+export const BOOK_LOADING_GIF_PATH = `${import.meta.env.BASE_URL}assets/pentashuriken-logo-anim.gif`
 
 /**
  * Minimum display duration (in milliseconds) for the book loading screen animation.
