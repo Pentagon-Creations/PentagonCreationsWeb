@@ -1,27 +1,34 @@
 import { useState, useEffect, useMemo } from 'react'
 import { useLanguage } from '../context/useLanguage'
 import { urlForImage } from '../sanity/client'
-import { ArrowUpRight } from 'lucide-react'
 import './HeaderWhatsOn.css'
 
 export default function HeaderWhatsOn({
   newsBox = [],
   releasedContent = [],
   newsInformation = [],
-  onSelectArticle,
+  availableSections = {},
 }) {
   const { lang, getLocalized, t } = useLanguage()
   const [activeChip, setActiveChip] = useState(null)
 
-  // Four category navigation buttons under "What's on Pentagon Creations"
+  // Category navigation buttons reflect only currently available / rendered sections
   const chips = useMemo(() => {
-    return [
-      { id: 'games', label: t('header.games'), href: '#featured-games' },
-      { id: 'drawing', label: t('header.drawingArt'), href: '#art-gallery' },
-      { id: 'story', label: t('header.storyBook'), href: '#story-books' },
-      { id: 'music', label: t('header.music'), href: '#music' },
-    ]
-  }, [t])
+    const list = []
+    if (availableSections.games) {
+      list.push({ id: 'games', label: t('header.games'), href: '#featured-games' })
+    }
+    if (availableSections.drawing) {
+      list.push({ id: 'drawing', label: t('header.drawingArt'), href: '#art-gallery' })
+    }
+    if (availableSections.story) {
+      list.push({ id: 'story', label: t('header.storyBook'), href: '#story-books' })
+    }
+    if (availableSections.music) {
+      list.push({ id: 'music', label: t('header.music'), href: '#music' })
+    }
+    return list
+  }, [availableSections, t])
 
   // Scroll-aware IntersectionObserver for active navigation state
   useEffect(() => {
@@ -33,12 +40,10 @@ export default function HeaderWhatsOn({
 
     if (sectionElements.length === 0) return
 
-    // IntersectionObserver observing destination sections
     const observer = new IntersectionObserver(
       (entries) => {
         const visibleEntries = entries.filter((entry) => entry.isIntersecting)
         if (visibleEntries.length > 0) {
-          // Sort by highest visibility ratio
           visibleEntries.sort((a, b) => b.intersectionRatio - a.intersectionRatio)
           const targetId = visibleEntries[0].target.id
           const matched = chips.find((c) => c.href === `#${targetId}`)
@@ -46,7 +51,6 @@ export default function HeaderWhatsOn({
             setActiveChip(matched.id)
           }
         } else {
-          // Check if viewport is above all category sections or below them
           const scrollPos = window.scrollY
           const navOffset = 70
           const firstElTop = sectionElements[0].el.offsetTop - navOffset
@@ -67,7 +71,6 @@ export default function HeaderWhatsOn({
 
     sectionElements.forEach((item) => observer.observe(item.el))
 
-    // Failsafe scroll handler for top of page
     const handleScrollFailsafe = () => {
       const scrollPos = window.scrollY
       const firstEl = sectionElements[0]?.el
@@ -108,29 +111,6 @@ export default function HeaderWhatsOn({
   // News information items (right column - concise text list)
   const infoItems = newsInformation ? newsInformation.slice(0, 6) : []
 
-  const handleCardClick = (item, defaultTitle) => {
-    if (item?.destinationUrl) {
-      if (item.destinationUrl.startsWith('#')) {
-        const el = document.querySelector(item.destinationUrl)
-        if (el) {
-          const navHeight = 64
-          const targetTop = el.getBoundingClientRect().top + window.pageYOffset - navHeight
-          window.scrollTo({ top: targetTop, behavior: 'smooth' })
-        }
-      } else {
-        window.open(item.destinationUrl, '_blank', 'noopener,noreferrer')
-      }
-    } else if (onSelectArticle) {
-      onSelectArticle({
-        title: getLocalized(item, 'title') || defaultTitle,
-        description: getLocalized(item, 'description') || getLocalized(item, 'summary'),
-        coverImage: urlForImage(item.coverImage) || item.coverImage,
-        date: item.publishedAt,
-        destinationUrl: item.destinationUrl,
-      })
-    }
-  }
-
   return (
     <section id="whats-on" className="section-whats-on" aria-labelledby="whats-on-heading">
       <div className="container">
@@ -139,7 +119,7 @@ export default function HeaderWhatsOn({
           {t('header.title')}
         </h2>
 
-        {/* Category Navigation Chips with Dynamic Active State */}
+        {/* Category Navigation Chips - only rendered when destination sections exist */}
         {chips.length > 0 && (
           <div className="category-chips-bar" role="toolbar" aria-label="Category navigation">
             {chips.map((chip) => (
@@ -155,23 +135,12 @@ export default function HeaderWhatsOn({
           </div>
         )}
 
-        {/* Three Column Grid */}
-        <div className="whats-on-grid">
-          {/* Column A: Large News Box */}
-          <div className="whats-on-col col-news-box">
-            {primaryNews ? (
-              <div
-                className="news-box-card"
-                onClick={() => handleCardClick(primaryNews, 'News Box')}
-                role={primaryNews.destinationUrl || onSelectArticle ? 'button' : 'article'}
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault()
-                    handleCardClick(primaryNews, 'News Box')
-                  }
-                }}
-              >
+        {/* Three Column Grid - adapts dynamically if middle column has no released content */}
+        <div className={`whats-on-grid ${releasedItems.length === 0 ? 'no-released' : ''}`}>
+          {/* Column A: Large News Box (Static Informational Content) */}
+          {primaryNews && (
+            <div className="whats-on-col col-news-box">
+              <div className="news-box-card">
                 <div className="news-box-image-wrap">
                   {primaryNews.coverImage ? (
                     <img
@@ -196,30 +165,14 @@ export default function HeaderWhatsOn({
                   </div>
                 </div>
               </div>
-            ) : (
-              <div className="empty-box-placeholder">
-                <span className="placeholder-text">News Box</span>
-              </div>
-            )}
-          </div>
+            </div>
+          )}
 
-          {/* Column B: Released Content (Stacked 3 cards) */}
-          <div className="whats-on-col col-released">
-            {releasedItems.length > 0 ? (
-              releasedItems.map((item, idx) => (
-                <div
-                  key={item._id || idx}
-                  className="released-content-card"
-                  onClick={() => handleCardClick(item, 'Released Content')}
-                  role={item.destinationUrl || onSelectArticle ? 'button' : 'article'}
-                  tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault()
-                      handleCardClick(item, 'Released Content')
-                    }
-                  }}
-                >
+          {/* Column B: Released Content (Static Cards with Bottom-Left Title) */}
+          {releasedItems.length > 0 && (
+            <div className="whats-on-col col-released">
+              {releasedItems.map((item, idx) => (
+                <div key={item._id || idx} className="released-content-card">
                   <div className="released-image-wrap">
                     {item.coverImage ? (
                       <img
@@ -231,43 +184,24 @@ export default function HeaderWhatsOn({
                     ) : (
                       <div className="released-placeholder" />
                     )}
+                    <div className="released-gradient-overlay" />
                     <div className="released-text-overlay">
-                      <span className="released-card-title">
+                      <h4 className="released-card-title">
                         {getLocalized(item, 'title') || 'Released Content'}
-                      </span>
+                      </h4>
                     </div>
                   </div>
                 </div>
-              ))
-            ) : (
-              [1, 2, 3].map((num) => (
-                <div key={num} className="released-content-card placeholder-card">
-                  <div className="released-placeholder-inner">
-                    <span>Released Content</span>
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
+              ))}
+            </div>
+          )}
 
-          {/* Column C: News / Information text list */}
-          <div className="whats-on-col col-information">
-            <div className="info-list" role="feed" aria-label="News and Information">
-              {infoItems.length > 0 ? (
-                infoItems.map((info, idx) => (
-                  <article
-                    key={info._id || idx}
-                    className="info-item"
-                    onClick={() => handleCardClick(info, 'News / Information')}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault()
-                        handleCardClick(info, 'News / Information')
-                      }
-                    }}
-                  >
+          {/* Column C: News / Information Text List (Static Informational Content) */}
+          {infoItems.length > 0 && (
+            <div className="whats-on-col col-information">
+              <div className="info-list" role="feed" aria-label="News and Information">
+                {infoItems.map((info, idx) => (
+                  <article key={info._id || idx} className="info-item">
                     <h4 className="info-item-headline">
                       {getLocalized(info, 'title') || 'News / Information about Pentagon Creations'}
                     </h4>
@@ -279,20 +213,11 @@ export default function HeaderWhatsOn({
                         )}
                       </time>
                     )}
-                    {info.destinationUrl && (
-                      <span className="info-link-indicator" aria-hidden="true">
-                        <ArrowUpRight size={14} />
-                      </span>
-                    )}
                   </article>
-                ))
-              ) : (
-                <div className="info-empty">
-                  <p>{t('common.emptyData')}</p>
-                </div>
-              )}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Subtle section divider */}

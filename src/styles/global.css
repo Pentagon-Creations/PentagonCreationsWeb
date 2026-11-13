@@ -1,13 +1,23 @@
 :root {
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   
-  /* Section backgrounds precisely matching the reference screenshot */
-  --bg-black: #000000;
-  --bg-header: #050505;
-  --bg-white: #ffffff;
-  --bg-light-gray: #cfd2d6;
-  --bg-medium-gray: #82868b;
-  --bg-dark-gray: #34373b;
+  /* Section backgrounds specified by design requirements */
+  --bg-navy: #132238;
+  --bg-navbar: #132238;
+  --bg-header: #132238;
+  --bg-music: #132238;
+  --bg-footer: #132238;
+  --bg-about: #132238;
+  --bg-creations: #F8F6F0;
+  --bg-games: #BFC1C2;
+  --bg-story: #868C94;
+  --bg-gallery: #4C5766;
+
+  /* Legacy references mapped to the palette */
+  --bg-black: #132238;
+  --bg-light-gray: #BFC1C2;
+  --bg-medium-gray: #868C94;
+  --bg-dark-gray: #4C5766;
   
   /* Text colors */
   --text-white: #ffffff;
@@ -131,6 +141,31 @@ img {
   letter-spacing: -0.01em;
   color: var(--text-black);
   margin-bottom: 20px;
+}
+
+/* Page Loading Screen */
+.page-loading-screen {
+  position: fixed;
+  inset: 0;
+  background-color: #132238;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+.page-loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-loading-gif {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  aspect-ratio: 1 / 1;
 }
 
 /* Subtle loading bar */

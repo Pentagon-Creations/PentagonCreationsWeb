@@ -200,8 +200,8 @@ export default function BookReadingPage({ slug, allStories = [] }) {
         <article className="book-reader-parchment">
           {/* Header Area */}
           <header className="book-reader-header">
-            {genre && <span className="book-reader-genre-tag">{genre}</span>}
             <h1 className="book-reader-title">{title}</h1>
+            {genre && <span className="book-reader-genre-tag">{genre}</span>}
             <p className="book-reader-author">
               {lang === 'id' ? 'Karya' : 'By'} <strong>{author}</strong>
             </p>

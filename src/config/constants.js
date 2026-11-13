@@ -10,11 +10,9 @@
 export const HOME_GALLERY_LIMIT = 8
 
 /**
- * Path to the logo GIF displayed on the dedicated book-reading page loading screen.
- * To insert your own GIF, place it in the public/assets/ directory and update this path:
- * e.g., '/assets/custom-logo.gif'
+ * Path to the logo GIF displayed on loading screens.
  */
-export const BOOK_LOADING_GIF_PATH = '/assets/book-loading.svg'
+export const BOOK_LOADING_GIF_PATH = '/assets/pentashuriken-logo-anim.gif'
 
 /**
  * Minimum display duration (in milliseconds) for the book loading screen animation.

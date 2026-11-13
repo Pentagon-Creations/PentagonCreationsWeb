@@ -5,39 +5,10 @@ import './OurCreations.css'
 export default function OurCreations({ categories = [], onSelectCategory }) {
   const { lang, getLocalized, t } = useLanguage()
 
-  // Default fallback pillars if categories empty
-  const defaultPillars = [
-    {
-      titleId: 'Game Development',
-      titleEn: 'Game Development',
-      descriptionId: 'Pengembangan pengalaman interaktif dan mekanik game inovatif.',
-      descriptionEn: 'Interactive game development with immersive systems and mechanics.',
-      destinationUrl: '#featured-games',
-    },
-    {
-      titleId: 'Story Writing',
-      titleEn: 'Story Writing',
-      descriptionId: 'Penulisan narasi fiksi, semesta cerita, dan eksplorasi karakter.',
-      descriptionEn: 'Fiction worldbuilding, rich narratives, and multifaceted lore.',
-      destinationUrl: '#story-books',
-    },
-    {
-      titleId: 'Drawing Art',
-      titleEn: 'Drawing Art',
-      descriptionId: 'Seni konsep visual, rancangan estetika, dan ilustrasi digital.',
-      descriptionEn: 'Concept design, expressive character art, and digital illustration.',
-      destinationUrl: '#art-gallery',
-    },
-    {
-      titleId: 'Music',
-      titleEn: 'Music',
-      descriptionId: 'Komposisi soundtrack sinematik, aransemen audio, dan tata suara.',
-      descriptionEn: 'Original soundtrack composition, ambient scoring, and soundscapes.',
-      destinationUrl: '#music',
-    },
-  ]
-
-  const itemsToRender = categories && categories.length > 0 ? categories : defaultPillars
+  // Only render if published categories are available from Sanity CMS
+  if (!categories || categories.length === 0) {
+    return null
+  }
 
   const handleCardClick = (cat) => {
     if (cat.destinationUrl) {
@@ -75,9 +46,9 @@ export default function OurCreations({ categories = [], onSelectCategory }) {
           </p>
         </div>
 
-        {/* 4 Cards Grid */}
+        {/* Categories Grid */}
         <div className="creations-grid">
-          {itemsToRender.slice(0, 4).map((cat, idx) => {
+          {categories.map((cat, idx) => {
             const title = getLocalized(cat, 'title') || cat.titleEn
             const desc = getLocalized(cat, 'description') || cat.descriptionEn
             const imageSrc = cat.coverImage ? urlForImage(cat.coverImage) || cat.coverImage : null

@@ -42,13 +42,13 @@ export default function Navbar({
   }, [menuOpen])
 
   const navLinks = [
-    { label: t('nav.whatsOn'), href: '#whats-on' },
-    { label: t('nav.ourCreations'), href: '#our-creations' },
+    ...(availableSections.whatsOn !== false ? [{ label: t('nav.whatsOn'), href: '#whats-on' }] : []),
+    ...(availableSections.creations ? [{ label: t('nav.ourCreations'), href: '#our-creations' }] : []),
     ...(availableSections.games ? [{ label: t('nav.featuredGames'), href: '#featured-games' }] : []),
     ...(availableSections.story ? [{ label: t('nav.storyBooks'), href: '#story-books' }] : []),
     ...(availableSections.drawing ? [{ label: t('nav.artGallery'), href: '#art-gallery' }] : []),
     ...(availableSections.music ? [{ label: t('nav.music'), href: '#music' }] : []),
-    { label: t('nav.aboutUs'), href: '#about-us' },
+    ...(availableSections.about ? [{ label: t('nav.aboutUs'), href: '#about-us' }] : []),
   ]
 
   const handleLinkClick = (e, href) => {

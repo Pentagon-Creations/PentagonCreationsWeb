@@ -1,10 +1,10 @@
 /* Book Reading Page & Loading Screen Styling */
 :root {
-  --paper-bg: #faf4e6;
-  --paper-card-bg: #fdfaf2;
-  --paper-text: #2a2521;
-  --paper-text-muted: #6e655f;
-  --paper-border: rgba(42, 37, 33, 0.12);
+  --paper-bg: #F8F6F0;
+  --paper-card-bg: #ffffff;
+  --paper-text: #1a1a1a;
+  --paper-text-muted: #555555;
+  --paper-border: rgba(0, 0, 0, 0.08);
   --paper-highlight: #c2592a;
 }
 
@@ -12,8 +12,8 @@
 .book-reader-loading-screen {
   position: fixed;
   inset: 0;
-  background-color: var(--paper-bg);
-  color: var(--paper-text);
+  background-color: #132238;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,8 +31,9 @@
 }
 
 .book-loading-gif {
-  width: 96px;
-  height: 96px;
+  width: 140px;
+  height: 140px;
+  aspect-ratio: 1 / 1;
   object-fit: contain;
 }
 
@@ -42,7 +43,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--paper-text);
+  color: #ffffff;
 }
 
 .pulse-icon {
@@ -64,14 +65,14 @@
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: var(--paper-text-muted);
+  color: #94a3b8;
   font-style: italic;
 }
 
 /* 2. Reading Page Layout */
 .book-reading-page {
   min-height: 100vh;
-  background-color: var(--paper-bg);
+  background-color: #F8F6F0;
   color: var(--paper-text);
   display: flex;
   flex-direction: column;
@@ -82,7 +83,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(250, 244, 230, 0.95);
+  background-color: rgba(248, 246, 240, 0.95);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--paper-border);
   z-index: 100;
@@ -162,17 +163,30 @@
   max-width: 740px;
   background-color: var(--paper-card-bg);
   border: 1px solid var(--paper-border);
-  box-shadow: 0 4px 20px rgba(42, 37, 33, 0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
   border-radius: 4px;
   padding: 56px 48px;
   display: flex;
   flex-direction: column;
 }
 
-/* Book Header */
+/* Book Header - Left-aligned with Genre below Title */
 .book-reader-header {
-  text-align: center;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   margin-bottom: 24px;
+}
+
+.book-reader-title {
+  font-family: Georgia, Cambria, 'Times New Roman', serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--paper-text);
+  margin-bottom: 8px;
+  text-align: left;
 }
 
 .book-reader-genre-tag {
@@ -185,21 +199,14 @@
   background: rgba(194, 89, 42, 0.1);
   padding: 3px 10px;
   border-radius: 9999px;
-  margin-bottom: 14px;
-}
-
-.book-reader-title {
-  font-family: Georgia, Cambria, 'Times New Roman', serif;
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1.25;
-  color: var(--paper-text);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  text-align: left;
 }
 
 .book-reader-author {
   font-size: 14px;
   color: var(--paper-text-muted);
+  text-align: left;
 }
 
 .book-reader-author strong {
@@ -207,24 +214,24 @@
 }
 
 .book-reader-divider {
-  width: 60px;
-  height: 2px;
+  width: 100%;
+  height: 1px;
   background-color: var(--paper-border);
-  margin: 0 auto 36px auto;
+  margin: 16px 0 32px 0;
 }
 
-/* Story Content Text */
+/* Story Content Text - Left-aligned (no justification) */
 .book-reader-content {
   font-family: Georgia, Cambria, 'Times New Roman', serif;
   font-size: 18px;
   line-height: 1.85;
   color: var(--paper-text);
+  text-align: left;
 }
 
 .book-story-text p {
   margin-bottom: 1.6em;
-  text-align: justify;
-  text-justify: inter-word;
+  text-align: left;
 }
 
 .book-story-text h2 {
@@ -234,7 +241,7 @@
   margin-top: 1.8em;
   margin-bottom: 0.8em;
   color: var(--paper-text);
-  text-align: center;
+  text-align: left;
 }
 
 .book-story-text h3 {
@@ -242,6 +249,7 @@
   font-weight: 700;
   margin-top: 1.4em;
   margin-bottom: 0.6em;
+  text-align: left;
 }
 
 .book-story-text blockquote {
@@ -250,6 +258,7 @@
   font-style: italic;
   margin: 1.5em 0;
   color: var(--paper-text-muted);
+  text-align: left;
 }
 
 /* Footer of the story */
@@ -257,10 +266,10 @@
   margin-top: 48px;
   padding-top: 32px;
   border-top: 1px solid var(--paper-border);
-  text-align: center;
+  text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 16px;
 }
 
@@ -283,7 +292,7 @@
 /* Not Found Screen */
 .book-reader-not-found-screen {
   min-height: 100vh;
-  background-color: var(--paper-bg);
+  background-color: #F8F6F0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -345,4 +354,3 @@
     font-size: 22px;
   }
 }
-

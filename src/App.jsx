@@ -17,6 +17,7 @@ import DetailModal from './components/DetailModal'
 import FallbackNotice from './components/FallbackNotice'
 import DedicatedGalleryPage from './components/DedicatedGalleryPage'
 import BookReadingPage from './components/BookReadingPage'
+import { BOOK_LOADING_GIF_PATH } from './config/constants'
 import { AlertCircle, RefreshCw } from 'lucide-react'
 import './styles/global.css'
 
@@ -80,12 +81,34 @@ function PentagonApp() {
       ? artworks[lightboxIndex]
       : null
 
-  // Available sections are always enabled so section navigation and anchors remain functional
+  // Requirement 7: Determine available sections strictly based on published Sanity content availability
   const availableSections = {
-    games: true,
-    drawing: true,
-    story: true,
-    music: true,
+    whatsOn: Boolean(
+      (newsBox && newsBox.length > 0) ||
+      (releasedContent && releasedContent.length > 0) ||
+      (newsInformation && newsInformation.length > 0)
+    ),
+    creations: Boolean(creationCategories && creationCategories.length > 0),
+    games: Boolean(featuredGames && featuredGames.length > 0),
+    drawing: Boolean(artworks && artworks.length > 0),
+    story: Boolean(storyBooks && storyBooks.length > 0),
+    music: Boolean(music && music.length > 0),
+    about: Boolean(siteSettings && (siteSettings.aboutId || siteSettings.aboutEn)),
+  }
+
+  // 0. Full Page Loading Screen with customized pentashuriken logo animation
+  if (loading) {
+    return (
+      <div className="page-loading-screen" role="status" aria-live="polite">
+        <div className="page-loading-container">
+          <img
+            src={BOOK_LOADING_GIF_PATH}
+            alt="Loading Pentagon Creations..."
+            className="page-loading-gif"
+          />
+        </div>
+      </div>
+    )
   }
 
   // 1. ROUTE: Dedicated Book-Reading Page
@@ -107,9 +130,6 @@ function PentagonApp() {
   // 3. ROUTE: Homepage
   return (
     <div id="top" className="site-wrapper">
-      {/* Top subtle loading indicator */}
-      {loading && <div className="top-loading-bar" aria-hidden="true" />}
-
       {/* Accessibility Skip Link */}
       <a href="#main-content" className="skip-link">
         Skip to main content
@@ -168,46 +188,60 @@ function PentagonApp() {
           </div>
         )}
 
-        {/* 1. Header: What's on Pentagon Creations */}
-        <HeaderWhatsOn
-          newsBox={newsBox}
-          releasedContent={releasedContent}
-          newsInformation={newsInformation}
-          onSelectArticle={(article) => openDetail(article, 'news')}
-        />
+        {/* 1. Header: What's on Pentagon Creations (Static informational content) */}
+        {availableSections.whatsOn && (
+          <HeaderWhatsOn
+            newsBox={newsBox}
+            releasedContent={releasedContent}
+            newsInformation={newsInformation}
+            availableSections={availableSections}
+          />
+        )}
 
-        {/* 2. Our Creations */}
-        <OurCreations
-          categories={creationCategories}
-          onSelectCategory={(cat) => openDetail(cat, 'category')}
-        />
+        {/* 2. Our Creations (Only rendered when published categories exist) */}
+        {availableSections.creations && (
+          <OurCreations
+            categories={creationCategories}
+            onSelectCategory={(cat) => openDetail(cat, 'category')}
+          />
+        )}
 
-        {/* 3. Featured Games */}
-        <FeaturedGames
-          games={featuredGames}
-          onSelectGame={(game) => openDetail(game, 'game')}
-        />
+        {/* 3. Featured Games (Only rendered when published games exist) */}
+        {availableSections.games && (
+          <FeaturedGames
+            games={featuredGames}
+            onSelectGame={(game) => openDetail(game, 'game')}
+          />
+        )}
 
-        {/* 4. Story Books */}
-        <StoryBooks
-          stories={storyBooks}
-          onSelectStory={(story) => openDetail(story, 'story')}
-        />
+        {/* 4. Story Books (Only rendered when published stories exist) */}
+        {availableSections.story && (
+          <StoryBooks
+            stories={storyBooks}
+            onSelectStory={(story) => openDetail(story, 'story')}
+          />
+        )}
 
-        {/* 5. Art Gallery / Drawing Art */}
-        <ArtGallery
-          artworks={artworks}
-          onOpenLightbox={openLightbox}
-        />
+        {/* 5. Art Gallery / Drawing Art (Only rendered when published artworks exist) */}
+        {availableSections.drawing && (
+          <ArtGallery
+            artworks={artworks}
+            onOpenLightbox={openLightbox}
+          />
+        )}
 
-        {/* 6. Music */}
-        <MusicSection
-          music={music}
-          onSelectTrack={(track) => openDetail(track, 'music')}
-        />
+        {/* 6. Music (Only rendered when published tracks exist) */}
+        {availableSections.music && (
+          <MusicSection
+            music={music}
+            onSelectTrack={(track) => openDetail(track, 'music')}
+          />
+        )}
 
-        {/* 7. About Us */}
-        <AboutUs siteSettings={siteSettings} />
+        {/* 7. About Us (Only rendered when siteSettings about text is published) */}
+        {availableSections.about && (
+          <AboutUs siteSettings={siteSettings} />
+        )}
       </main>
 
       {/* Footer */}
