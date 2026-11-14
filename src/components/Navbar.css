@@ -3,9 +3,11 @@
   top: 0;
   left: 0;
   width: 100%;
+  max-width: 100%;
   background-color: #132238;
   z-index: 1000;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-sizing: border-box;
 }
 
 .navbar-container {
@@ -13,6 +15,9 @@
   align-items: center;
   justify-content: space-between;
   height: 64px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* Brand styling matching screenshot */
@@ -22,12 +27,15 @@
   gap: 12px;
   color: #ffffff;
   text-decoration: none;
+  min-width: 0;
+  flex-shrink: 1;
 }
 
 .brand-logo-mark {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .brand-circle {
@@ -52,6 +60,8 @@
   line-height: 1.1;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  min-width: 0;
+  white-space: nowrap;
 }
 
 /* Controls */
@@ -59,6 +69,7 @@
   display: flex;
   align-items: center;
   gap: 18px;
+  flex-shrink: 0;
 }
 
 /* Language Capsule: ID | EN */
@@ -70,6 +81,8 @@
   padding: 2px 10px;
   background: transparent;
   gap: 6px;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .lang-btn {
@@ -107,6 +120,7 @@
   padding: 6px;
   border-radius: 4px;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .navbar-toggle-btn:hover {
@@ -118,13 +132,18 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  height: 100dvh;
   z-index: 2000;
   display: flex;
   justify-content: flex-end;
   visibility: hidden;
   pointer-events: none;
+  overflow: hidden;
   transition: visibility 0.25s ease;
 }
 
@@ -137,6 +156,8 @@
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
@@ -152,13 +173,14 @@
 .nav-drawer-content {
   position: relative;
   width: 320px;
-  max-width: 85vw;
+  max-width: 85%;
   height: 100%;
   background: #132238;
   border-left: 1px solid rgba(255, 255, 255, 0.1);
   padding: 32px 24px;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
   transform: translateX(100%);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 10;
@@ -209,5 +231,44 @@
 .nav-links-list a:hover {
   color: #ffffff;
   transform: translateX(4px);
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 640px) {
+  .navbar-container {
+    height: 56px;
+  }
+
+  .navbar-controls {
+    gap: 12px;
+  }
+
+  .navbar-brand {
+    gap: 10px;
+  }
+
+  .brand-circle,
+  .brand-logo-img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .brand-wordmark {
+    font-size: 10.5px;
+  }
+
+  .lang-capsule {
+    padding: 2px 8px;
+    gap: 4px;
+  }
+
+  .lang-btn {
+    font-size: 11px;
+    padding: 2px 2px;
+  }
+
+  .navbar-toggle-btn {
+    padding: 4px;
+  }
 }
 
